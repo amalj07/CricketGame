@@ -10,10 +10,11 @@ Rules = "The game is between user and computer. Each one has one wicket. The acc
         "should score more runs than computer has scored"
 while True:
     read_rules = input("Do you want to read the rules (Y/N): ")
-    if read_rules == "Y" or read_rules == "y":
+    read_rules = read_rules.upper()
+    if read_rules == "Y":
         print(Rules)
         break
-    elif read_rules == "N" or read_rules == "n":
+    elif read_rules == "N":
         break
     else:
         print("You entered invalid key")
@@ -27,13 +28,8 @@ toss = toss_list[toss_int]
 while True:
     try:
         toss_called = input("Heads or Tails (H/T): ")
-        if toss_called == "H" or toss_called == "h":
-            toss_called = "H"
-            break
-        elif toss_called == "T" or toss_called == "t":
-            toss_called = "T"
-            break
-        else:
+        toss_called = toss_called.upper()
+        if toss_called != "H" or toss_called != "T":
             print("You entered invalid choice: ", toss_called)
             continue
     except ValueError:
@@ -43,7 +39,8 @@ while True:
 if toss == toss_called:
     print("You won the toss")
     user_innings = input("Bat or Bowl: ")
-    if user_innings == "Bat" or user_innings == "bat":
+    user_innings = user_innings.upper()
+    if user_innings == "BAT":
         print("Get ready for Batting")
     else:
         print("Get ready for Bowling")
@@ -54,7 +51,7 @@ else:
     computer_innings = computer_innings_list[computer_innings_list_int]
     if computer_innings == "Batting":
         print("Computer selected Batting")
-        print("Get ready to Bowling")
+        print("Get ready for Bowling")
         user_innings = "Bowling"
     else:
         print("Computer selected Bowling")
@@ -66,7 +63,7 @@ cmp_runs = 0
 user_bowl = 1
 cmp_bowl = 1
 
-if user_innings == "Bat" or user_innings == "bat":
+if user_innings == "BAT":
     total_user_runs = 0
     while user_runs != cmp_bowl:
         cmp_bowl = random.randint(0, 6)
@@ -93,7 +90,8 @@ if user_innings == "Bat" or user_innings == "bat":
                 total_user_runs = total_user_runs + user_runs
                 print("Your total runs: ", total_user_runs)
         else:
-            print("Computer and you entered the same number: ", user_runs, "You're OUT")
+            print("Computer and you entered the same number: ",
+                  user_runs, "You're OUT")
             print("Your runs: ", total_user_runs)
             print("You need to defend computer from taking ", total_user_runs)
             break
@@ -125,7 +123,8 @@ if user_innings == "Bat" or user_innings == "bat":
                     total_cmp_runs = total_cmp_runs + cmp_runs
                     print("Computer total runs: ", total_cmp_runs)
             else:
-                print("Computer and you entered the same number: ", user_bowl, "Computer is OUT")
+                print("Computer and you entered the same number: ",
+                      user_bowl, "Computer is OUT")
                 if total_user_runs == total_cmp_runs:
                     print("Game draw")
                     print("Your runs: ", total_user_runs)
@@ -169,7 +168,8 @@ else:
                 total_cmp_runs = total_cmp_runs + cmp_runs
                 print("Computer total runs: ", total_cmp_runs)
         else:
-            print("Computer and you entered the same number: ", user_bowl, "Computer is OUT")
+            print("Computer and you entered the same number: ",
+                  user_bowl, "Computer is OUT")
             print("Computer runs: ", total_cmp_runs)
             print("You need to take ", total_cmp_runs + 1, "to win")
             break
@@ -201,7 +201,8 @@ else:
                     total_user_runs = total_user_runs + user_runs
                     print("Your total runs: ", total_user_runs)
             else:
-                print("Computer and you entered the same number: ", user_runs, "You're OUT")
+                print("Computer and you entered the same number: ",
+                      user_runs, "You're OUT")
                 if total_cmp_runs == total_user_runs:
                     print("Game draw")
                     print("Your runs: ", total_user_runs)
